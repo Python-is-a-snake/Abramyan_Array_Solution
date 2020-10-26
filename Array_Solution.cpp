@@ -63,12 +63,71 @@ int array_51(){
     }
 }
 
+int array_130(){
+    int a[20];
+    int n;
+    cout << "N: ";
+    cin >> n;
+ 
+    int i;
+    for (i = 0; i<n; ++i)
+    {
+        cout << "a[" << i + 1 << "] : ";
+        cin >> a[i];
+    }
+ 
+    int i2;
+    for (i = 0; i < n; ++i)
+    {
+        if (i + 1 < n)
+        {
+            if (a[i + 1] != a[i])
+            {
+                ++n;
+                for (i2 = n - 1; i2>i; --i2) a[i2] = a[i2 - 1];
+                ++i;
+            }
+        }
+    }
+    ++n;
+    a[n - 1] = a[n - 2];
+ 
+    for (i = 0; i < n; ++i)
+        cout << ' ' << i + 1 << ": " << a[i] << endl;
+ 
+}
+
+int array_74(){
+    int const n = 10;
+    int arr[n] = {4,5,7,1,3,8,5,4,9,8};
+    cout << "Result: ";
+    int maxIndex = 0;
+    int minIndex = 0;
+    for (int i = 0; i < n; i++) {
+        if (arr[i] < arr[minIndex]) {
+            minIndex = i;
+
+
+            for (int i = 0; i < n; i++) {
+                if (arr[i] > arr[maxIndex])
+                    maxIndex = i;}
+            int start = min(minIndex, maxIndex);
+            int end = max(minIndex, maxIndex);
+            for (int i = start + 1; i < end; i++)
+                arr[i] = 0;
+        }
+        cout << arr[i] <<" " ;
+    }
+    cout << endl;       
+}
+
 int main()
 {
     array_1();
     array_23();
     array_32();
     array_51();
-    
+    array_74();
+    array_130();
     return 0;
 }
